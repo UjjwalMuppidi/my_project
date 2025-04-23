@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering System - Home</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">QuickBite</div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+                <div class="cart-icon" onclick="window.location.href='cart.html'">
+                    🛒 <span id="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>Delicious Food Delivered To Your Door</h1>
+                <p>Order your favorite meals from the best restaurants in town</p>
+                <a href="#menu" class="btn primary-btn cta-button">Order Now</a>
+            </div>
+        </section>
+
+        <section id="menu" class="menu-section">
+            <h2>Our Menu</h2>
+            <div class="menu-filters">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="main">Main Course</button>
+                <button class="filter-btn" data-category="appetizer">Appetizers</button>
+                <button class="filter-btn" data-category="dessert">Desserts</button>
+            </div>
+            <div class="menu-grid" id="menu-container">
+                <div class="menu-item">
+                    <img src="images/margerita-pizza.jpg" alt="Margherita Pizza">
+                    <div class="menu-item-content">
+                        <h3>Margherita Pizza</h3>
+                        <p>Classic Italian pizza with tomato sauce and mozzarella</p>
+                        <div class="menu-item-price">₹250</div>
+                        <button class="btn primary-btn" onclick="addToCart(1)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/chicken-burger.jpeg" alt="Chicken Burger">
+                    <div class="menu-item-content">
+                        <h3>Chicken Burger</h3>
+                        <p>Grilled chicken patty with fresh vegetables</p>
+                        <div class="menu-item-price">₹180</div>
+                        <button class="btn primary-btn" onclick="addToCart(2)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/caesar-salad.jpeg" alt="Caesar Salad">
+                    <div class="menu-item-content">
+                        <h3>Caesar Salad</h3>
+                        <p>Fresh romaine lettuce with Caesar dressing</p>
+                        <div class="menu-item-price">₹150</div>
+                        <button class="btn primary-btn" onclick="addToCart(3)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/pasta-carbonara.jpg" alt="Pasta Carbonara">
+                    <div class="menu-item-content">
+                        <h3>Pasta Carbonara</h3>
+                        <p>Creamy pasta with bacon and parmesan</p>
+                        <div class="menu-item-price">₹350</div>
+                        <button class="btn primary-btn" onclick="addToCart(4)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/chocolate-cake.jpg" alt="Chocolate Cake">
+                    <div class="menu-item-content">
+                        <h3>Chocolate Cake</h3>
+                        <p>Rich chocolate cake with ganache</p>
+                        <div class="menu-item-price">₹180</div>
+                        <button class="btn primary-btn" onclick="addToCart(5)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Food Ordering System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/menu.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
