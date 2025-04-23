@@ -1,32 +1,30 @@
 pipeline {
     agent any
 
-    environment {
-        IMAGE_NAME = 'static-site'
-        CONTAINER_NAME = 'static-container'
-        PORT = '8081'
-    }
-
     stages {
-        stage('Clone Repo') {
+        stage('Checkout SCM') {
             steps {
-                git branch: 'main', url: 'https://github.com/UjjwalMuppidi/my_project.git'
+                checkout scm
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${IMAGE_NAME}", ".")
+                    // Build Docker image with project folder 'my_project'
+                    sh 'docker build -t static-site ./my_project'
                 }
             }
         }
 
-        stage('Run Container') {
+        stage('Run Docker Container') {
             steps {
                 script {
-                    sh "docker rm -f ${CONTAINER_NAME} || true"
-                    sh "docker run -d --name ${CONTAINER_NAME} -p ${PORT}:80 ${IMAGE_NAME}"
+                    // Clean up any previous containers with the same name
+                    sh 'docker rm -f static-container || true'
+                    
+                    // Run the Docker container and map the port 8081
+                    sh 'docker run -d --name static-container -p 8081:80 static-site'
                 }
             }
         }
