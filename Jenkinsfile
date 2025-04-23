@@ -11,7 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build Docker image with project folder 'my_project'
+                    // Change the build context to the my_project directory
                     sh 'docker build -t static-site ./my_project'
                 }
             }
