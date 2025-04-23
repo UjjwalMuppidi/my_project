@@ -1,11 +1,14 @@
-# Use an official Nginx image from the Docker Hub
+# Use official Nginx image from the Docker Hub
 FROM nginx:alpine
 
-# Set the working directory to /app (optional)
+# Set the working directory
 WORKDIR /app
 
-# Copy the contents of the local directory (where your static files are located) to the container
-COPY . /usr/share/nginx/html
+# Copy the contents of your 'my_project' directory into the Nginx container's HTML folder
+COPY ./my_project /usr/share/nginx/html
 
-# Expose port 80 (default for Nginx)
+# Expose port 80 to serve content
 EXPOSE 80
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
