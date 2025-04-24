@@ -2,29 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout SCM') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Build Docker Image') {
+        stage('Trigger Remote Job') {
             steps {
                 script {
-                    // Change the build context to the my_project directory
-                    sh 'docker build -t static-site ./my_project'
-                }
-            }
-        }
-
-        stage('Run Docker Container') {
-            steps {
-                script {
-                    // Clean up any previous containers with the same name
-                    sh 'docker rm -f static-container || true'
+                    // Print the message to the Jenkins console
+                    echo 'Hello, how can I help?'
                     
-                    // Run the Docker container and map the port 8081
-                    sh 'docker run -d --name static-container -p 8081:80 static-site'
+                    // Trigger the remote job using curl
+                    def jenkinsUrl = 'http://localhost:8080/job/chat_bot_ci/build?token=chatbot_build_trigger'
+                    sh "curl -X POST ${jenkinsUrl}"
                 }
             }
         }
