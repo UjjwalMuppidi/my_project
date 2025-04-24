@@ -1,14 +1,9 @@
-# Use official Nginx image from the Docker Hub
-FROM nginx:alpine
+FROM python:3.9-slim
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the contents of your 'my_project' directory into the Nginx container's HTML folder
-COPY ./my_project /usr/share/nginx/html
+COPY . .
 
-# Expose port 80 to serve content
-EXPOSE 80
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["python", "app/app.py"]
